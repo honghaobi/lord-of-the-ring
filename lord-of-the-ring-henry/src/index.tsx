@@ -4,16 +4,18 @@ import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
+import MoviesPage from './components/MoviesPage'
+import CharactersPage from './components/CharactersPage'
 import './index.css';
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <h1>Page 1</h1>,
+        element: <MoviesPage/>,
     },
     {
-        path: "/page2",
-        element: <h1>Page 2</h1>,
+        path: "/movie/:movie_id/character/:char_id",
+        element: <CharactersPage/>,
     }
 ]);
 
