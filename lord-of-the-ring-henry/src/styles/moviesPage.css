@@ -1,0 +1,31 @@
+.moviesPage {
+    background-color: #111314;
+    background-image: url('../images/bg.jpg');
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.posterContainer {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    width: 55%;
+    padding: 3%;
+}
+
+.poster {
+    width: 25%;
+    margin: 2%;
+    border: beige solid 1px;
+}
+
+.infoContainer {
+    width: 30%;
+    height: 75%;
+    padding: 3%;
+    background-image: url('../images/info.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
