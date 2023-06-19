@@ -13,8 +13,8 @@ function MoviesPage() {
         const moviesWithPoster = await Promise.all(
             validMovies.map(async (movie) => {
                 const response = await getMoviePoster(movie.name);
-                const moviePoster = response.results[0]?.poster_path;
-                movie.postURL = `https://image.tmdb.org/t/p/w500/${moviePoster}`;
+                movie.postURL = `https://image.tmdb.org/t/p/w500/${response.results[0]?.poster_path}`;
+                movie.overview = response.results[0]?.overview;
                 return movie;
             })
         );
@@ -26,18 +26,20 @@ function MoviesPage() {
     }, []);
 
 
+    const selectedMovie = movies[selectedMovieIndex];
     return <div className='moviesPage'>
         {movies.length && <>
             <div className='posterContainer'>
-                {movies.map((movie, i) => <img className='poster' alt={movie.name} src={movie.postURL}/>)}
+                {movies.map((movie, i) => <img className='poster' key={i} alt={movie.name}
+                                               src={movie.postURL} onClick={() => setSelectedMovieIndex(i)}/>)}
             </div>
             <div className='infoContainer'>
-                {movies[selectedMovieIndex].name}
-                {movies[selectedMovieIndex].budgetInMillions}
-                {movies[selectedMovieIndex].boxOfficeRevenueInMillions}
-                {movies[selectedMovieIndex].academyAwardNominations}
-                {movies[selectedMovieIndex].academyAwardWins}
-                {movies[selectedMovieIndex].rottenTomatoesScore}
+                <h1>{selectedMovie.name}</h1>
+                <h3>Budget: ${selectedMovie.budgetInMillions} Mil | Revenue:
+                    ${selectedMovie.boxOfficeRevenueInMillions} Mil</h3>
+                <h3>Nomination: {selectedMovie.academyAwardNominations} | Award: {selectedMovie.academyAwardWins}</h3>
+                <h3>Rotten Tomatoe Score: {selectedMovie.rottenTomatoesScore}/100</h3>
+                <section className='overview'>{selectedMovie.overview}</section>
             </div>
         </>
         }

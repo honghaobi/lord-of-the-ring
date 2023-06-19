@@ -8,6 +8,7 @@ export type Movie = {
     academyAwardWins: number;
     rottenTomatoesScore: number;
     postURL: string;
+    overview: string;
 };
 
 export type MovieListResponse = {
