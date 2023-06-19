@@ -12,7 +12,7 @@
     flex-flow: wrap;
     justify-content: center;
     width: 55%;
-    padding: 3%;
+    padding: 3% 0 3% 3%;
 }
 
 .poster {
@@ -56,4 +56,17 @@
     overflow: clip;
     text-overflow: ellipsis;
     text-shadow: 1px 1px 1px #414b69;
+}
+
+.arrow{
+    -webkit-filter: drop-shadow(1px 2px 5px rgba(245, 245, 245, .3));
+    filter: drop-shadow(1px 2px 5px rgba(245, 245, 245, .3));
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.arrow:hover {
+    -webkit-filter: drop-shadow(5px 5px 5px rgba(245, 245, 245, .5));
+    filter: drop-shadow(5px 5px 5px rgba(245, 245, 245, .5));
+    transform: scale(1.05, 1.05);
 }
