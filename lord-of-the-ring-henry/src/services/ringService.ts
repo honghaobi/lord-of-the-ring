@@ -26,9 +26,9 @@ export const getMovies = async (endPoint: string): Promise<MovieListResponse> =>
         throw new Error('Failed to fetch movies list.');
     }
 };
-export const getCharacters = async (endPoint: string): Promise<CharacterListResponse> => {
+export const getCharacters = async (endPoint: string, params:string): Promise<CharacterListResponse> => {
     try {
-        const response = await axios.get(BASE_URL + endPoint, {headers});
+        const response = await axios.get(`${BASE_URL}${endPoint}?${params}`, {headers});
         return response.data;
     } catch (error) {
         throw new Error('Failed to fetch characters list.');

@@ -1,5 +1,3 @@
-import charactersPage from "../components/CharactersPage";
-
 export type Movie = {
     _id: string;
     name: string;
