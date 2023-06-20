@@ -1,3 +1,5 @@
+import charactersPage from "../components/CharactersPage";
+
 export type Movie = {
     _id: string;
     name: string;
@@ -44,6 +46,25 @@ export type MovieSearchResponse = {
     total_results: number;
 };
 
+export type Character = {
+    _id: string;
+    height: string;
+    race: string;
+    gender: string;
+    birth: string;
+    spouse: string;
+    death: string;
+    realm: string;
+    hair: string;
+    name: string;
+    wikiUrl: string;
+};
 
-
-
+export type CharacterListResponse = {
+    docs: Character[],
+    limit: number;
+    offset: number;
+    pages: number;
+    page: number;
+    total: number;
+};

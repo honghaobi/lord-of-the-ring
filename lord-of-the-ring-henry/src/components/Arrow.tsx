@@ -1,6 +1,7 @@
 import {useNavigate} from "react-router-dom";
 import leftArrow from "../images/arrowL.png";
 import rightArrow from "../images/arrowR.png";
+import "../styles/arrow.css";
 
 function Arrow(props: { pathUrl: string, isRight?: boolean }) {
     const navigate = useNavigate();

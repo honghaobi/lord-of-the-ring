@@ -1,0 +1,8 @@
+.charactersPage {
+    background-color: #111314;
+    background-image: url('../images/bg2.jpg');
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
