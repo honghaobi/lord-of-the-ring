@@ -66,3 +66,19 @@ export type CharacterListResponse = {
     page: number;
     total: number;
 };
+
+export type Quote = {
+    _id: string;
+    dialog: string;
+    movie: string;
+    character: string;
+    id: string;
+};
+export type QuoteListResponse = {
+    docs: Quote[];
+    total: number;
+    limit: number;
+    offset: number;
+    page: number;
+    pages: number;
+};

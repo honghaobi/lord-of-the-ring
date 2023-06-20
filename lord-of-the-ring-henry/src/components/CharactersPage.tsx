@@ -8,23 +8,23 @@ import {Character} from "../types/type";
 import "../styles/charactersPage.css";
 import Pagination from "./Pagination";
 
+const DEFAULT_PARAMS = {
+    limit: 28,
+    page: 1,
+    offset: 0
+};
+
 function CharactersPage() {
     const [characters, setCharacters] = useState<Character[]>([])
     const [selectedChar, setSelectedChar] = useState<Character>()
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [total, setTotal] = useState<number>(1);
-    const [params, setParams] = useState<Params>({
-        limit: 32,
-        page: 1,
-        offset: 0,
-        name: '',
-        race: ''
-    });
+    const [params, setParams] = useState<Params>(DEFAULT_PARAMS);
 
     async function fetchCharacters() {
         const charactersData = await getCharacters('character', encodeQueryString(params));
         setCharacters(charactersData.docs)
-        setSelectedChar(charactersData.docs[0])
+        !selectedChar && setSelectedChar(charactersData.docs[0])
         setTotal(charactersData.total)
         setCurrentPage(params.page)
     }

@@ -7,9 +7,11 @@
 }
 
 .page-button {
-    padding: 6px 12px;
+    padding: 5px 5px;
     margin-right: 5px;
+    font-family: 'MedievalSharp', cursive;
     font-size: 14px;
+    text-align: center;
     color: #333;
     background-color: #fff;
     border: 2px solid #FCBF2D;

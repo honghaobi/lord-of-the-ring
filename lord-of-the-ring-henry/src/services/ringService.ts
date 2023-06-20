@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {CharacterListResponse, MovieListResponse, MovieSearchResponse} from "../types/type";
+import {CharacterListResponse, MovieListResponse, MovieSearchResponse, QuoteListResponse} from "../types/type";
 
 const BASE_URL = 'https://the-one-api.dev/v2/'
 const ACCESS_TOKEN = 'oxDxkz_5IkvMFQAogHgT';
@@ -26,11 +26,19 @@ export const getMovies = async (endPoint: string): Promise<MovieListResponse> =>
         throw new Error('Failed to fetch movies list.');
     }
 };
-export const getCharacters = async (endPoint: string, params:string): Promise<CharacterListResponse> => {
+export const getCharacters = async (endPoint: string, params: string): Promise<CharacterListResponse> => {
     try {
         const response = await axios.get(`${BASE_URL}${endPoint}?${params}`, {headers});
         return response.data;
     } catch (error) {
         throw new Error('Failed to fetch characters list.');
+    }
+};
+export const getQuote = async (endPoint: string): Promise<QuoteListResponse> => {
+    try {
+        const response = await axios.get(`${BASE_URL}${endPoint}`, {headers});
+        return response.data;
+    } catch (error) {
+        throw new Error('Failed to fetch quotes.');
     }
 };
