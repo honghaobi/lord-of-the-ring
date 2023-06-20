@@ -17,6 +17,7 @@ import spider from "../images/race/spider.jpg";
 import troll from "../images/race/troll.jpg";
 import uruks from "../images/race/uruks.jpg";
 import vampire from "../images/race/vampire.jpg";
+import placeholder from "../images/race/placeholder.jpg";
 
 export const raceImageDict: Record<string, string> = {
     "Human": human,
@@ -55,5 +56,6 @@ export const raceImageDict: Record<string, string> = {
     "Balrog": balrog,
     "Eagle": eagle,
     "Stone-trolls": troll,
-    "Vampire": vampire
+    "Vampire": vampire,
+    "NaN": placeholder
 }

@@ -30,6 +30,9 @@
 }
 
 .infoContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     width: 30%;
     height: 75%;
     padding: 3%;
@@ -40,7 +43,9 @@
     text-align: center;
     -webkit-filter: drop-shadow(0px 5px 10px rgba(245, 245, 245, .5));
     filter: drop-shadow(0px 5px 10px rgba(245, 245, 245, .5));
+    overflow: scroll;
 }
+
 .infoContainer > h1 {
     color: #20293A;
     margin: 70px 40px 20px 40px;
@@ -49,12 +54,13 @@
 
 .infoContainer > h3 {
     color: #30353f;
+    margin: 5px;
     text-shadow: 1px 1px 1px #414b69;
 }
 
 .overview {
     font-size: 16px;
-    margin: 30px;
+    margin: 5px 30px;
     overflow: clip;
     text-overflow: ellipsis;
     text-shadow: 1px 1px 1px #414b69;

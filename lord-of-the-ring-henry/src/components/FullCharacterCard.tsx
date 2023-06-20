@@ -18,7 +18,9 @@ function FullCharacterCard(props: Props) {
     async function fetchQuotes() {
         const quotesData = await getQuote(`character/${id}/quote`);
         const quotes = quotesData.docs;
-        setQuote(quotes[Math.floor(Math.random() * quotes.length)].dialog)
+        if (quotes.length > 0) {
+            setQuote(quotes[Math.floor(Math.random() * quotes.length)].dialog)
+        }
     }
 
     useEffect(() => {

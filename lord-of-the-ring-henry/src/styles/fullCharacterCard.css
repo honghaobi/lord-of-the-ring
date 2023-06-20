@@ -21,14 +21,14 @@
     border: beige solid 2px;
 }
 
-h2 {
+.fullCharCardContainer > h2 {
     font-size: 30px;
     margin-top: 30px;
     margin-bottom: 5px;
     color: #20293A;
 }
 
-h3 {
+.fullCharCardContainer > h3 {
     width: 60%;
     margin: 5px 0;
     color: #20293A;
