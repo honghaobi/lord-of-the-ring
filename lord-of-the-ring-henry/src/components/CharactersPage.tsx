@@ -11,7 +11,7 @@ import "../styles/charactersPage.css";
 const DEFAULT_PARAMS = {
     limit: 28,
     page: 1,
-    offset: 0,
+    offset: 0
 };
 
 function CharactersPage() {
@@ -47,37 +47,7 @@ function CharactersPage() {
         setParams(updatedParams);
     };
 
-    const handlePageChange = (page: number) => {
-        updateParams({page});
-    };
-
-    const CharacterCardContainer = () => (
-        <div className="charactersContainer">
-            {characters.map((character, index) => (
-                <div key={index} onClick={() => setSelectedChar(character)}>
-                    <CharacterCard
-                        name={character.name}
-                        race={character.race}
-                        selected={selectedChar?._id === character._id}
-                    />
-                </div>
-            ))}
-        </div>
-    );
-
-    const FullCharacterCardContainer = () => (
-        <div className="chosenContainer">
-            {selectedChar && (
-                <FullCharacterCard
-                    id={selectedChar._id}
-                    name={selectedChar.name}
-                    race={selectedChar.race}
-                    gender={selectedChar.gender}
-                    realm={selectedChar.realm}
-                />
-            )}
-        </div>
-    );
+    const handlePageChange = (page: number) => updateParams({page});
 
     return (
         <div className="charactersPage">
@@ -85,7 +55,17 @@ function CharactersPage() {
             {characters.length > 0 && (
                 <div>
                     <h1 className="header">Choose Your Character</h1>
-                    <CharacterCardContainer/>
+                    <div className="charactersContainer">
+                        {characters.map((character, index) => (
+                            <div key={index} onClick={() => setSelectedChar(character)}>
+                                <CharacterCard
+                                    name={character.name}
+                                    race={character.race}
+                                    selected={selectedChar?._id === character._id}
+                                />
+                            </div>
+                        ))}
+                    </div>
                     <div className="paginateContainer">
                         <Pagination
                             totalPages={Math.ceil(total / params.limit)}
@@ -93,7 +73,17 @@ function CharactersPage() {
                             onPageChange={handlePageChange}
                         />
                     </div>
-                    <FullCharacterCardContainer/>
+                    <div className="chosenContainer">
+                        {selectedChar && (
+                            <FullCharacterCard
+                                id={selectedChar._id}
+                                name={selectedChar.name}
+                                race={selectedChar.race}
+                                gender={selectedChar.gender}
+                                realm={selectedChar.realm}
+                            />
+                        )}
+                    </div>
                 </div>
             )}
         </div>

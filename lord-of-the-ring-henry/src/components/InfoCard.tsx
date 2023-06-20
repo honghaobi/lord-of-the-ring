@@ -1,3 +1,4 @@
+import "../styles/infoCard.css";
 import {Movie} from "../types/type";
 
 function InfoCard(props: Partial<Movie>) {
