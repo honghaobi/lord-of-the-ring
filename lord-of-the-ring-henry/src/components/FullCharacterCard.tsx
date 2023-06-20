@@ -15,11 +15,12 @@ function FullCharacterCard(props: Props) {
     const {id, name, race, gender, realm} = props;
     const [quote, setQuote] = useState<string>('')
 
-    async function fetchQuotes() {
+    const fetchQuotes = async () => {
         const quotesData = await getQuote(`character/${id}/quote`);
         const quotes = quotesData.docs;
         if (quotes.length > 0) {
-            setQuote(quotes[Math.floor(Math.random() * quotes.length)].dialog)
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)].dialog;
+            setQuote(randomQuote);
         }
     }
 
@@ -27,12 +28,17 @@ function FullCharacterCard(props: Props) {
         fetchQuotes()
     }, [id])
 
-    return <div className='fullCharCardContainer'>
-        <img className='charImg' src={raceImageDict[race]} alt={race}/>
-        <h2>{name}</h2>
-        <h3>🔮‍{race} · 🚻 {gender} {realm && <span> · 🌎 Realm: {realm}</span>}</h3>
-        {quote && <h3>"{quote}"</h3>}
-    </div>;
+    return (
+        <div className="fullCharCardContainer">
+            <img className="charImg" src={raceImageDict[race]} alt={race}/>
+            <h2>{name}</h2>
+            <h3>
+                🔮‍{race} · 🚻 {gender}
+                {realm && <span> · 🌎 Realm: {realm}</span>}
+            </h3>
+            {quote && <h3>"{quote}"</h3>}
+        </div>
+    );
 }
 
 export default FullCharacterCard

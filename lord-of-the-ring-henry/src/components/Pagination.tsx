@@ -1,13 +1,21 @@
 import React from 'react';
 import '../styles/paginate.css';
-interface PaginationProps {
+
+type Props = {
     totalPages: number;
     currentPage: number;
     onPageChange: (page: number) => void;
-}
+};
 
-const Pagination: React.FC<PaginationProps> = ({totalPages, currentPage, onPageChange,}) => {
-    const handlePageChange = (page: number) => page !== currentPage && onPageChange(page);
+function Pagination(props: Props) {
+    const { totalPages, currentPage, onPageChange } = props;
+
+    const handlePageChange = (page: number) => {
+        if (page !== currentPage) {
+            onPageChange(page);
+        }
+    };
+
     const renderPageNumbers = () => {
         const maxButtons = 8;
         const pageNumbers: React.ReactNode[] = [];
@@ -28,8 +36,11 @@ const Pagination: React.FC<PaginationProps> = ({totalPages, currentPage, onPageC
 
         for (let i = startPage; i <= endPage; i++) {
             pageNumbers.push(
-                <button key={i} className={`page-button ${currentPage === i ? 'active' : ''}`}
-                        onClick={() => handlePageChange(i)}>
+                <button
+                    key={i}
+                    className={`page-button ${currentPage === i ? 'active' : ''}`}
+                    onClick={() => handlePageChange(i)}
+                >
                     {i}
                 </button>
             );
@@ -56,25 +67,28 @@ const Pagination: React.FC<PaginationProps> = ({totalPages, currentPage, onPageC
         return pageNumbers;
     };
 
+    const isPrevButtonDisabled = currentPage === 1;
+    const isNextButtonDisabled = currentPage === totalPages;
+
     return (
         <div className="pagination">
             <button
-                className={`page-button ${currentPage === 1 ? 'disabled' : ''}`}
+                className={`page-button ${isPrevButtonDisabled ? 'disabled' : ''}`}
                 onClick={() => handlePageChange(currentPage - 1)}
-                disabled={currentPage === 1}
+                disabled={isPrevButtonDisabled}
             >
                 Prev
             </button>
             {renderPageNumbers()}
             <button
-                className={`page-button ${currentPage === totalPages ? 'disabled' : ''}`}
+                className={`page-button ${isNextButtonDisabled ? 'disabled' : ''}`}
                 onClick={() => handlePageChange(currentPage + 1)}
-                disabled={currentPage === totalPages}
+                disabled={isNextButtonDisabled}
             >
                 Next
             </button>
         </div>
     );
-};
+}
 
 export default Pagination;
