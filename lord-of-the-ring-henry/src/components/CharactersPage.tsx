@@ -2,9 +2,10 @@ import {useEffect, useState} from "react";
 import {getCharacters} from "../services/ringService";
 import {encodeQueryString, Params} from "../utils/helpers";
 import Arrow from "./Arrow";
+import CharacterCard from "./CharacterCard";
+import FullCharacterCard from "./FullCharacterCard";
 import {Character} from "../types/type";
 import "../styles/charactersPage.css";
-import CharacterCard from "./CharacterCard";
 
 function CharactersPage() {
     const [characters, setCharacters] = useState<Character[]>([])
@@ -21,6 +22,7 @@ function CharactersPage() {
         const charactersData = await getCharacters('character', encodeQueryString(params));
 
         setCharacters(charactersData.docs)
+        setSelectedChar(charactersData.docs[0])
     }
 
     useEffect(() => {
@@ -43,14 +45,9 @@ function CharactersPage() {
                     <CharacterCard name={char.name} race={char.race} selected={selectedChar?._id === char._id}/></div>)}
             </div>
             <div className="chosenContainer">
-                {selectedChar && <div>
-                    {selectedChar.name}
-                    {selectedChar.race}
-                    {selectedChar.gender}
-                    {selectedChar.realm}
-                </div>
-                }
-                <div> Quotes:</div>
+                {selectedChar &&
+                    <FullCharacterCard id={selectedChar._id} name={selectedChar.name} race={selectedChar.race}
+                                       gender={selectedChar.gender} realm={selectedChar.realm}/>}
             </div>
         </div>
     </div>
