@@ -15,10 +15,7 @@ test('renders character card correctly and displays quote', async () => {
     };
 
     const mockQuotesData = {
-        docs: [
-            {dialog: 'I can carry it, but I cannot carry it for you.'},
-            {dialog: 'I wish the Ring had never come to me.'},
-        ],
+        docs: [{dialog: 'I wish the Ring had never come to me.'}]
     };
 
     (getQuote as jest.Mock).mockResolvedValue(mockQuotesData);
@@ -27,10 +24,11 @@ test('renders character card correctly and displays quote', async () => {
     })
 
     expect(screen.getByText(characterProps.name)).toBeInTheDocument();
-    expect(screen.getByText(characterProps.race, { exact: false })).toBeInTheDocument();
-    expect(screen.getByText(characterProps.gender, { exact: false })).toBeInTheDocument();
-    expect(screen.getByText(characterProps.realm, { exact: false })).toBeInTheDocument();
+    expect(screen.getByText(characterProps.race, {exact: false})).toBeInTheDocument();
+    expect(screen.getByText(characterProps.gender, {exact: false})).toBeInTheDocument();
+    expect(screen.getByText(characterProps.realm, {exact: false})).toBeInTheDocument();
+    expect(screen.getByText(mockQuotesData.docs[0].dialog, {exact: false})).toBeInTheDocument();
 
-    const image = screen.getByAltText(characterProps.race) as HTMLImageElement;
+    const image: HTMLImageElement = screen.getByAltText(characterProps.race);
     expect(image.src).toContain(raceImageDict[characterProps.race]);
 });
