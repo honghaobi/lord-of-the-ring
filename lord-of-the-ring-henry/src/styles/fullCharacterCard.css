@@ -33,3 +33,13 @@
     margin: 5px 0;
     color: #20293A;
 }
+
+@media (max-width: 960px) {
+    .fullCharCardContainer > h2 {
+        font-size: 18px;
+    }
+
+    .fullCharCardContainer > h3 {
+        font-size: 12px;
+    }
+}

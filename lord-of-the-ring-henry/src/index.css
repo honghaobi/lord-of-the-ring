@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
 
+html {
+  min-width: 760px;
+  min-height: 640px;
+}
+
 body {
   height: 100vh;
   margin: 0;

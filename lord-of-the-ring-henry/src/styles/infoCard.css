@@ -22,6 +22,7 @@
 }
 
 .infoContainer > h3 {
+    font-size: 16px;
     color: #30353f;
     margin: 5px;
     text-shadow: 1px 1px 1px #414b69;
@@ -29,8 +30,25 @@
 
 .overview {
     font-size: 16px;
-    margin: 5px 30px;
+    margin: 5px 5%;
     overflow: clip;
     text-overflow: ellipsis;
     text-shadow: 1px 1px 1px #414b69;
+}
+
+@media (max-width: 960px) {
+    .infoContainer > h1 {
+        font-size: 16px;
+        margin: 5px;
+    }
+
+    .infoContainer > h3 {
+        font-size: 12px;
+        margin: 2px;
+    }
+
+    .overview {
+        font-size: 10px;
+        margin: 2px 2%;
+    }
 }
