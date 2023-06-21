@@ -21,6 +21,8 @@ function FullCharacterCard(props: Props) {
         if (quotes.length > 0) {
             const randomQuote = quotes[Math.floor(Math.random() * quotes.length)].dialog;
             setQuote(randomQuote);
+        } else {
+            setQuote('');
         }
     }
 
