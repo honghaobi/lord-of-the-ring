@@ -29,7 +29,7 @@ function FullCharacterCard(props: Props) {
     }, [id])
 
     return (
-        <div className="fullCharCardContainer">
+        <div className="fullCharCardContainer" data-testid="full-character-card">
             <img className="charImg" src={raceImageDict[race]} alt={race}/>
             <h2>{name}</h2>
             <h3>
