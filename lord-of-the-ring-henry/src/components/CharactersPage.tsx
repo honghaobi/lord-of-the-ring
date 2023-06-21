@@ -21,20 +21,19 @@ function CharactersPage() {
     const [total, setTotal] = useState<number>(1);
     const [params, setParams] = useState<Params>(DEFAULT_PARAMS);
 
-    const fetchCharacters = async () => {
-        const charactersData = await getCharacters(
-            "character",
-            encodeQueryString(params)
-        );
-        setCharacters(charactersData.docs);
-        if (!selectedChar) {
-            setSelectedChar(charactersData.docs[0]);
-        }
-        setTotal(charactersData.total);
-        setCurrentPage(params.page);
-    };
-
     useEffect(() => {
+        const fetchCharacters = async () => {
+            const charactersData = await getCharacters(
+                "character",
+                encodeQueryString(params)
+            );
+            setCharacters(charactersData.docs);
+            if (!selectedChar) {
+                setSelectedChar(charactersData.docs[0]);
+            }
+            setTotal(charactersData.total);
+            setCurrentPage(params.page);
+        };
         fetchCharacters();
     }, [params]);
 

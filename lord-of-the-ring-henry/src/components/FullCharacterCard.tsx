@@ -15,18 +15,17 @@ function FullCharacterCard(props: Props) {
     const {id, name, race, gender, realm} = props;
     const [quote, setQuote] = useState<string>('')
 
-    const fetchQuotes = async () => {
-        const quotesData = await getQuote(`character/${id}/quote`);
-        const quotes = quotesData.docs;
-        if (quotes.length > 0) {
-            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)].dialog;
-            setQuote(randomQuote);
-        } else {
-            setQuote('');
-        }
-    }
-
     useEffect(() => {
+        const fetchQuotes = async () => {
+            const quotesData = await getQuote(`character/${id}/quote`);
+            const quotes = quotesData.docs;
+            if (quotes.length > 0) {
+                const randomQuote = quotes[Math.floor(Math.random() * quotes.length)].dialog;
+                setQuote(randomQuote);
+            } else {
+                setQuote('');
+            }
+        }
         fetchQuotes()
     }, [id])
 

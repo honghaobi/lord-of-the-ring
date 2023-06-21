@@ -5,9 +5,12 @@ import "../styles/arrow.css";
 
 function Arrow(props: { pathUrl: string, isRight?: boolean }) {
     const navigate = useNavigate();
-    return <img className="arrow" src={props.isRight ? rightArrow : leftArrow}
-                alt={props.isRight ? "rightArrow" : "leftArrow"}
-                onClick={() => navigate(props.pathUrl)}/>;
+    return (
+        <img className="arrow"
+             src={props.isRight ? rightArrow : leftArrow}
+             alt={props.isRight ? "rightArrow" : "leftArrow"}
+             onClick={() => navigate(props.pathUrl)}/>
+    );
 }
 
 export default Arrow

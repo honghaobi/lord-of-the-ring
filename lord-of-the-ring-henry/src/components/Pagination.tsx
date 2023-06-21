@@ -38,7 +38,7 @@ function Pagination(props: Props) {
             pageNumbers.push(
                 <button
                     key={i}
-                    className={`page-button ${currentPage === i ? 'active' : ''}`}
+                    className={`pageButton ${currentPage === i ? 'active' : ''}`}
                     onClick={() => handlePageChange(i)}
                 >
                     {i}
@@ -49,7 +49,7 @@ function Pagination(props: Props) {
         if (totalPages > maxButtons) {
             if (currentPage >= maxButtons - 4) {
                 pageNumbers.unshift(
-                    <button key="ellipsis-start" className="page-button ellipsis" disabled={true}>
+                    <button key="ellipsis-start" className="pageButton ellipsis" disabled={true}>
                         ...
                     </button>
                 );
@@ -57,7 +57,7 @@ function Pagination(props: Props) {
 
             if (currentPage <= totalPages - 3) {
                 pageNumbers.push(
-                    <button key="ellipsis-end" className="page-button ellipsis" disabled={true}>
+                    <button key="ellipsis-end" className="pageButton ellipsis" disabled={true}>
                         ...
                     </button>
                 );
@@ -73,7 +73,7 @@ function Pagination(props: Props) {
     return (
         <div className="pagination">
             <button
-                className={`page-button ${isPrevButtonDisabled ? 'disabled' : ''}`}
+                className={`pageButton ${isPrevButtonDisabled ? 'disabled' : ''}`}
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={isPrevButtonDisabled}
             >
@@ -81,7 +81,7 @@ function Pagination(props: Props) {
             </button>
             {renderPageNumbers()}
             <button
-                className={`page-button ${isNextButtonDisabled ? 'disabled' : ''}`}
+                className={`pageButton ${isNextButtonDisabled ? 'disabled' : ''}`}
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={isNextButtonDisabled}
             >

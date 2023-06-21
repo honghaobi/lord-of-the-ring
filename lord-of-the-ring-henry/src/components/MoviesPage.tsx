@@ -8,29 +8,28 @@ import "../styles/moviesPage.css";
 function MoviesPage() {
     const [movies, setMovies] = useState<Movie[]>([])
     const [selectedMovieIndex, setSelectedMovieIndex] = useState<number>(0)
-    const fetchMovies = async () => {
-        const moviesData = await getMovies('movie');
-        const validMovies = moviesData.docs.slice(2, moviesData.docs.length)
-        const moviesWithPoster = await Promise.all(
-            validMovies.map(async (movie) => {
-                const response = await getMoviePoster(movie.name);
-                const {poster_path, overview} = response.results[0] || {};
-                return {
-                    ...movie,
-                    postURL: poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : "",
-                    overview: overview || "",
-                };
-            })
-        );
-        setMovies(moviesWithPoster)
-    }
+    const selectedMovie = movies[selectedMovieIndex];
 
     useEffect(() => {
+        const fetchMovies = async () => {
+            const moviesData = await getMovies('movie');
+            const validMovies = moviesData.docs.slice(2, moviesData.docs.length)
+            const moviesWithPoster = await Promise.all(
+                validMovies.map(async (movie) => {
+                    const response = await getMoviePoster(movie.name);
+                    const {poster_path, overview} = response.results[0] || {};
+                    return {
+                        ...movie,
+                        postURL: poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : "",
+                        overview: overview || "",
+                    };
+                })
+            );
+            setMovies(moviesWithPoster)
+        }
         fetchMovies();
     }, []);
 
-
-    const selectedMovie = movies[selectedMovieIndex];
     return (
         <div className="moviesPage">
             {movies.length > 0 && (

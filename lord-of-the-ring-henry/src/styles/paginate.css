@@ -6,7 +6,7 @@
     color: #021f54;
 }
 
-.page-button {
+.pageButton {
     padding: 5px 5px;
     margin-right: 5px;
     font-family: 'MedievalSharp', cursive;
@@ -19,18 +19,18 @@
     border-radius: 5px;
 }
 
-.page-button.active {
+.pageButton.active {
     color: #fff;
     background-color: #FCBF2D;
     border-color: #FCBF2D;
 }
 
-.page-button.disabled {
+.pageButton.disabled {
     cursor: not-allowed;
     opacity: 0.6;
 }
 
-.page-button.ellipsis {
+.pageButton.ellipsis {
     background-color: transparent;
     font-size: 20px;
     color: #fff;

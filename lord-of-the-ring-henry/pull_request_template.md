@@ -29,10 +29,9 @@ and the navigation is straightforward, making it easy for users to explore the d
 
 5 - If you had more time, what else would you add?
 
-* A search and filter function for the characters page would be a significant enhancement, allowing users to find
-  specific
-  characters or filter characters based on certain attributes. This functionality would make the application more
-  interactive and user-friendly, enabling users to navigate large amounts of data more efficiently.
+* A search, sort and filter function for the characters page would be a significant enhancement, allowing users to find
+  specific characters or filter characters based on certain attributes. This functionality would make the application
+  more interactive and user-friendly, enabling users to navigate large amounts of data more efficiently.
 
 * Implementing a loading state across the application would provide feedback to the users about ongoing processes,
   enhancing the user experience. Particularly for slower networks, this can prevent confusion and reassure users that

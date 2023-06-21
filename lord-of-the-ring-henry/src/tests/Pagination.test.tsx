@@ -21,7 +21,7 @@ describe('Pagination', () => {
         const displayedPagesEnd = Math.min(totalPages, displayedPagesStart + maxButtons - 1);
         for (let i = displayedPagesStart; i <= displayedPagesEnd; i++) {
             const button = screen.getByText(i.toString());
-            expect(button).toHaveClass(`page-button${currentPage === i ? ' active' : ''}`);
+            expect(button).toHaveClass(`pageButton${currentPage === i ? ' active' : ''}`);
         }
     });
 

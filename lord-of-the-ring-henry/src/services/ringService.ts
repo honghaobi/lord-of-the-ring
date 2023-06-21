@@ -9,36 +9,26 @@ const headers = {
     'Authorization': `Bearer ${ACCESS_TOKEN}`,
 };
 
-export const getMoviePoster = async (title: string): Promise<MovieSearchResponse> => {
+const fetchData = async (url: string, errorMsg: string) => {
     try {
-        const response = await axios.get(MOVIE_POSTER_BASE_URL + title);
-        return response.data
+        const response = await axios.get(url, {headers});
+        return response.data;
     } catch (error) {
-        throw new Error('Failed to fetch movie data.');
+        throw new Error(errorMsg);
     }
+};
+export const getMoviePoster = async (title: string): Promise<MovieSearchResponse> => {
+    return fetchData(MOVIE_POSTER_BASE_URL + title, 'Failed to fetch movie data.');
 };
 
 export const getMovies = async (endPoint: string): Promise<MovieListResponse> => {
-    try {
-        const response = await axios.get(BASE_URL + endPoint, {headers});
-        return response.data;
-    } catch (error) {
-        throw new Error('Failed to fetch movies list.');
-    }
+    return fetchData(BASE_URL + endPoint, 'Failed to fetch movies list.');
 };
+
 export const getCharacters = async (endPoint: string, params: string): Promise<CharacterListResponse> => {
-    try {
-        const response = await axios.get(`${BASE_URL}${endPoint}?${params}`, {headers});
-        return response.data;
-    } catch (error) {
-        throw new Error('Failed to fetch characters list.');
-    }
+    return fetchData(`${BASE_URL}${endPoint}?${params}`, 'Failed to fetch characters list.');
 };
+
 export const getQuote = async (endPoint: string): Promise<QuoteListResponse> => {
-    try {
-        const response = await axios.get(`${BASE_URL}${endPoint}`, {headers});
-        return response.data;
-    } catch (error) {
-        throw new Error('Failed to fetch quotes.');
-    }
+    return fetchData(`${BASE_URL}${endPoint}`, 'Failed to fetch quotes.');
 };
